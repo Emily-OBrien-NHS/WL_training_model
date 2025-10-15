@@ -70,7 +70,8 @@ with st.sidebar:
 st.markdown('# Week by Week Arrivals and Apointments Input')
 arr_and_apts = st.data_editor(pd.DataFrame({'Internal':[internal] * default_params.run_time,
                            'External':[external] * default_params.run_time,
-                           'Appointments':[default_apts] * default_params.run_time}).T).fillna(0).astype(int)
+                           'Appointments':[default_apts] * default_params.run_time}).T
+                           ).fillna(0).astype(int)
 fig, ax = plt.subplots(figsize=(20, 2.5))
 arr_and_apts.T.plot(ax=ax)
 ax.set_xlabel('Week')
