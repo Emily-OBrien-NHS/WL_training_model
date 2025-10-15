@@ -70,7 +70,7 @@ with st.sidebar:
 st.markdown('# Week by Week Arrivals and Apointments Input')
 arr_and_apts = st.data_editor(pd.DataFrame({'Internal':[internal] * default_params.run_time,
                            'External':[external] * default_params.run_time,
-                           'Appointments':[default_apts] * default_params.run_time}).T).fillna(0)
+                           'Appointments':[default_apts] * default_params.run_time}).T)
 fig, ax = plt.subplots(figsize=(20, 2.5))
 arr_and_apts.T.plot(ax=ax)
 ax.set_xlabel('Week')
@@ -84,7 +84,7 @@ args.run_name = 'streamlit'
 args.internal = internal
 args.external = external
 args.default_apts = default_apts
-args.arr_and_apts = arr_and_apts.T.reset_index(drop=True)
+args.arr_and_apts = arr_and_apts.T.reset_index(drop=True).fillna(0)
 args.ROT_rate = ROT_rate
 args.DNA_rate = DNA_rate
 args.clin_prior = pd.DataFrame({'Priority':[i+1 for i in range(3)],
